@@ -1,8 +1,4 @@
 'use client';
-import Login from "@/pages/LogIn";
-import Signup from "@/pages/SignUp";
-import Welcome from "@/pages/Welcome";
-
 
 export default function Home() {
   return (
