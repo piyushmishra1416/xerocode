@@ -16,6 +16,6 @@ export const AppwriteService = {
   },
   async loginWithOAuth(provider: string) {
    //@ts-ignore
-    return await account.createOAuth2Session(provider, `${window.location.origin}/dashboard`, `${window.location.origin}/login`);
-  }
+    return await account.createOAuth2Session(provider, `${window.location.origin}/welcome`, `${window.location.origin}/login`);
+  } 
 };

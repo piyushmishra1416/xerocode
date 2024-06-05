@@ -1,5 +1,5 @@
 // src/controllers/AuthController.ts
-import { AppwriteService } from '../../services/AppWriteService';
+import { AppwriteService } from '../services/AppWriteService';
 
 export class AuthController {
   static async register(email: string, password: string, name: string) {
