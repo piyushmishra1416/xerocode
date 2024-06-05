@@ -1,5 +1,7 @@
+"use server";
+import { Client, Account, OAuthProvider } from 'appwrite';
 
-import { Client, Account } from 'appwrite';
+
 
 const client = new Client();
 client.setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT as string)
@@ -14,8 +16,10 @@ export const AppwriteService = {
   async login(email: string, password: string) {
     return await account.createSession(email, password);
   },
-  async loginWithOAuth(provider: string) {
-   //@ts-ignore
-    return await account.createOAuth2Session(provider, `${window.location.origin}/welcome`, `${window.location.origin}/login`);
-  } 
+  async loginWithOAuthGithub() {
+    return await account.createOAuth2Session(OAuthProvider.Github, `${window.location.origin}/welcome`, `${window.location.origin}/login`);
+  }, 
+  async loginWithOAuthGoogle() {
+   return await account.createOAuth2Session(OAuthProvider.Google, `${window.location.origin}/welcome`, `${window.location.origin}/login`);
+ } 
 };

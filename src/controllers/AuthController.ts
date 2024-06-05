@@ -11,10 +11,10 @@ export class AuthController {
   }
 
   static async loginWithGoogle() {
-    return await AppwriteService.loginWithOAuth('google');
+    return await AppwriteService.loginWithOAuthGoogle();
   }
 
   static async loginWithGitHub() {
-    return await AppwriteService.loginWithOAuth('github');
+    return await AppwriteService.loginWithOAuthGithub();
   }
 }
