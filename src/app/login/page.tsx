@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { AuthController } from '../../controllers/AuthController';
+import { AuthController } from '@/controllers/AuthController';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -12,33 +12,35 @@ const Login: React.FC = () => {
   const router = useRouter();
 
   const handleLogin = async () => {
-   try {
-     await AuthController.login(email, password);
-      router.push('/welcome')
-   } catch (error) {
-     console.error('Login failed', error);
-   }
- };
+    try {
+      await AuthController.login(email, password);
+      router.push('/welcome');
+    } catch (error) {
+      console.error('Login failed', error);
+    }
+  };
 
- const handleGoogleLogin = async () => {
-   try {
-     await AuthController.loginWithGoogle();
-   } catch (error) {
-     console.error('Google login failed', error);
-   }
- };
+  const handleGoogleLogin = async () => {
+    try {
+      await AuthController.loginWithGoogle();
+      router.push('/welcome');
+    } catch (error) {
+      console.error('Google login failed', error);
+    }
+  };
 
- const handleGitHubLogin = async () => {
-   try {
-     await AuthController.loginWithGitHub();
-   } catch (error) {
-     console.error('GitHub login failed', error);
-   }
- };
+  const handleGitHubLogin = async () => {
+    try {
+      await AuthController.loginWithGitHub();
+      router.push('/welcome');
+    } catch (error) {
+      console.error('GitHub login failed', error);
+    }
+  };
 
   return (
-    <div className="h-screen flex items-center justify-center ">
-      <div className="border border-black w-[70%]  h-[70%] rounded-xl shadow-lg  relative">
+    <div className="h-screen flex items-center justify-center">
+      <div className="border border-black w-[70%] h-[70%] rounded-xl shadow-lg relative">
         <div className="w-[40%] mt-[4%] ml-[20%]">
           <div className="absolute bottom-0 right-0">
             <Image src="/vector.svg" alt="Wave" width={500} height={150} />

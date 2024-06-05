@@ -8,8 +8,8 @@ client.setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT as string)
 const account = new Account(client);
 
 export const AppwriteService = {
-  async register(email: string, password: string, name: string) {
-    return await account.create('unique()', email, password, name);
+  async register(email: string, password: string, firstname: string, lastname: string) {
+    return await account.create('unique()', email, password,firstname);
   },
   async login(email: string, password: string) {
     return await account.createSession(email, password);

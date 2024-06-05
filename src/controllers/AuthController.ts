@@ -2,8 +2,8 @@
 import { AppwriteService } from '../services/AppWriteService';
 
 export class AuthController {
-  static async register(email: string, password: string, name: string) {
-    return await AppwriteService.register(email, password, name);
+  static async register(email: string, password: string, fistname: string, lastname: string) {
+    return await AppwriteService.register(email, password, fistname, lastname);
   }
 
   static async login(email: string, password: string) {

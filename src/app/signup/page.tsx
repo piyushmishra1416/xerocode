@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { AuthController } from '@/controllers/AuthController';
 
-
 const Signup: React.FC = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -15,26 +14,32 @@ const Signup: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const router = useRouter();
 
-  // const handleLogin = async () => {
-  //   try {
-  //     await AuthController.register(email, password);
-  //      router.push('/welcome')
-  //   } catch (error) {
-  //     console.error('Login failed', error);
-  //   }
-  // };
- 
+  const handleSignup = async () => {
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+    try {
+      await AuthController.register(firstName, lastName, email, password);
+      router.push('/welcome');
+    } catch (error) {
+      console.error('Signup failed', error);
+    }
+  };
+
   const handleGoogleSignup = async () => {
     try {
       await AuthController.loginWithGoogle();
+      router.push('/welcome');
     } catch (error) {
       console.error('Google login failed', error);
     }
   };
- 
-  const handleGithubSignup= async () => {
+
+  const handleGithubSignup = async () => {
     try {
       await AuthController.loginWithGitHub();
+      router.push('/welcome');
     } catch (error) {
       console.error('GitHub login failed', error);
     }
@@ -94,7 +99,7 @@ const Signup: React.FC = () => {
               variant="contained"
               color="primary"
               fullWidth
-              // onClick={handleSignup}
+              onClick={handleSignup}
             >
               SIGN UP
             </Button>
