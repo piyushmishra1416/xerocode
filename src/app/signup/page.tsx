@@ -1,5 +1,4 @@
-'use client';
-
+"use client"
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useRouter } from 'next/navigation';
